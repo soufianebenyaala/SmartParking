@@ -12,13 +12,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Auth',
+      title: 'Smart Parking',
       theme: ThemeData(
         primaryColor: kPrimaryColor,
         scaffoldBackgroundColor: Colors.white,
       ),
-      home: HomeScreen(),
-      //home: SplashPage(duration: 3,goTopage: WelcomeScreen()),
+      home: WelcomeScreen(),
     );
   }
 }
