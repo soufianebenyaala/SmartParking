@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_auth/Screens/Home/components/body.dart';
+import 'package:flutter_auth/Screens/Parkings/components/body.dart';
 
-class HomeScreen extends StatelessWidget {
+class ParkingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

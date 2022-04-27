@@ -15,7 +15,4 @@ class Car {
       this.owner_id
     }
   );
-   static List<Car> cars = [
-      Car()
- ];
 }

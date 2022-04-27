@@ -16,7 +16,7 @@ class ParkingCard extends StatelessWidget {
         this.onCardClick();
       },
       child: Container(
-          margin: EdgeInsets.all(20),
+          margin: EdgeInsets.symmetric(horizontal: 20,vertical: 10),
           height: 150,
           child: Stack(
             children: [

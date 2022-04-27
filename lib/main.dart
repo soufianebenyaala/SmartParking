@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_auth/Screens/Home/home_screen.dart';
-import 'package:flutter_auth/Screens/SplashPage/splash_screen.dart';
-import 'package:flutter_auth/Screens/Welcome/welcome_screen.dart';
 import 'package:flutter_auth/constants.dart';
+import 'package:flutter_auth/layouts/parking_layout.dart';
 
 void main() => runApp(MyApp());
 
@@ -17,7 +15,8 @@ class MyApp extends StatelessWidget {
         primaryColor: kPrimaryColor,
         scaffoldBackgroundColor: Colors.white,
       ),
-      home: WelcomeScreen(),
+      home: ParkingLayout(),
+      //home: SplashPage(duration: 3,goTopage: WelcomeScreen()),
     );
   }
 }
