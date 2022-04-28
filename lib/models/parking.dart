@@ -28,4 +28,16 @@ class Parking {
     }
   );
 
+  Parking.fromJosn(Map json) :
+      Name=json["Name"], 
+      Adress=json["Adress"],
+      description=json["description"],
+      totalParkingLots=json["totalParkingLots"],
+      totalFreeParkingLots=json["totalFreeParkingLots"],
+      latitude=json["latitude"],
+      longitude=json["longitude"],
+      ParkingFees=json["ParkingFees"],
+      companyId=json["companyId"],
+      Status=json["Status"];
+
 }

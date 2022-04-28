@@ -20,10 +20,20 @@ class User {
       this.password,
       this.photo,
       this.phone,
-      this.role="user",
+      this.role="Client",
       this.cars,
     }
   );
+
+  User.fromJosn(Map json) :
+          name = json["name"],
+          email = json["email"],
+          address = json["address"],
+          password = json["password"],
+          photo = json["photo"],
+          phone = json["phone"],
+          role = json["role"],
+          cars = json["cars"];
 
 
 }

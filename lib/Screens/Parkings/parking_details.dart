@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_auth/Screens/Parkings/resevation_screen.dart';
 import 'package:flutter_auth/components/rounded_button.dart';
 import 'package:flutter_auth/constants.dart';
 import 'package:flutter_auth/models/parking.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:http/http.dart' as http;
 
@@ -49,7 +48,11 @@ class ParkingDetailsScreen extends StatelessWidget {
                   color: kPrimaryColor,
                   text: "Reserve maintenant",
                   textColor:  Colors.white,
-                  press: (){},
+                  press: (){ Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ReservationScreen(parking)),
+                    );},
                 ),
                 RoundedButton(
                   color: Colors.red[800],

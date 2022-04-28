@@ -25,10 +25,22 @@ class Body extends StatelessWidget {
             SizedBox(height: size.height * 0.03),
             SvgPicture.asset(
               "assets/icons/register.svg",
-              height: size.height * 0.35,
+              height: size.height * 0.09,
             ),
             RoundedInputField(
+              hintText: "Your Name",
+              onChanged: (value) {},
+            ),
+             RoundedInputField(
               hintText: "Your Email",
+              onChanged: (value) {},
+            ),
+             RoundedInputField(
+              hintText: "Your Address",
+              onChanged: (value) {},
+            ),
+             RoundedInputField(
+              hintText: "Your Phone",
               onChanged: (value) {},
             ),
             RoundedPasswordField(
