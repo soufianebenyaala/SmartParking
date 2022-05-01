@@ -1,8 +1,9 @@
+import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:flutter_auth/components/mainappbar.dart';
 import 'package:flutter_auth/components/sidemenubar.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 
 import 'cubit/bottomnavbar_cubit.dart';
 
@@ -28,8 +29,8 @@ class ParkingLayout extends StatelessWidget {
               items: [
                 TabItem(icon: Icons.home, title: 'Home'),
                 TabItem(icon: Icons.map, title: 'Discovery'),
-                TabItem(icon: Icons.add, title: 'Add'),
-                TabItem(icon: Icons.message, title: 'Message'),
+                //TabItem(icon: Icons.add, title: 'Add'),
+                //TabItem(icon: Icons.message, title: 'Message'),
                 TabItem(icon: Icons.people, title: 'Profile'),
               ],
               //initialActiveIndex: 2,//optional, default as 0

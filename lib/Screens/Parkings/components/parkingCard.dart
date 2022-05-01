@@ -55,13 +55,13 @@ class ParkingCard extends StatelessWidget {
                         //mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(this.parking.Name,
+                          Text(this.parking.name,
                               style:
                                   TextStyle(color: Colors.white, fontSize: 27)),
                           Row(
                             children: [
                               Icon(Icons.pin_drop, color: Colors.red[900]),
-                              Text(this.parking.Adress,
+                              Text(this.parking.adress,
                                   style: TextStyle(
                                       color: Colors.white, fontSize: 18)),
                             ],
@@ -93,7 +93,7 @@ class ParkingCard extends StatelessWidget {
                   child: Row(
                     children: [
                       SizedBox(width: 10),
-                      Text(this.parking.ParkingFees.toString()+" TND",style: TextStyle(
+                      Text(this.parking.parkingFees.toString()+" TND",style: TextStyle(
                                       color: kPrimaryLightColor, fontSize: 21,fontWeight: FontWeight.bold)),
                     ],
                   ),

@@ -5,10 +5,12 @@ import 'package:flutter_auth/models/parking.dart';
 import 'package:flutter_auth/utils/parkings.dart';
 
 class Body extends StatelessWidget {
-  List<Parking> parkings = ParkingsPreferences.parkings;
-
+  List<Parking> parkings;
+  Body({this.parkings});
+  //List<Parking> parkings = ParkingsPreferences.parkings;
+  
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context)  {
     return Container(
         //color: Colors.black12,
         child: Column(
@@ -21,8 +23,8 @@ class Body extends StatelessWidget {
               style: TextStyle(color: Colors.black)),
         ),
         Expanded(
-          child: ListView.builder(
-            itemCount: parkings.length,
+          child: parkings != null ? ListView.builder(
+            itemCount:  parkings.length,
             itemBuilder: (context, index) {
               return ParkingCard(
                   parking: parkings[index],
@@ -34,7 +36,7 @@ class Body extends StatelessWidget {
                     );
                   });
             },
-          ),
+          ):  Center(child: CircularProgressIndicator(),)
         ),
       ],
     ));

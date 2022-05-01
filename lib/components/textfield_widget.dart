@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 
 class TextFieldWidget extends StatefulWidget {
+  TextEditingController controller;
   final int maxLines;
   final String label;
   final String text;
   final ValueChanged<String> onChanged;
 
-  const TextFieldWidget({
+  TextFieldWidget({
     Key key,
     this.maxLines = 1,
+    this.controller,
     this.label,
     this.text,
     this.onChanged,
@@ -19,21 +21,21 @@ class TextFieldWidget extends StatefulWidget {
 }
 
 class _TextFieldWidgetState extends State<TextFieldWidget> {
-  TextEditingController controller;
+  
 
-  @override
-  void initState() {
-    super.initState();
-
-    controller = TextEditingController(text: widget.text);
-  }
-
-  @override
-  void dispose() {
-    controller.dispose();
-
-    super.dispose();
-  }
+  //@override
+  //void initState() {
+  //  super.initState();
+//
+  //  wcontroller = TextEditingController(text: widget.text);
+  //}
+//
+  //@override
+  //void dispose() {
+  //  controller.dispose();
+//
+  //  super.dispose();
+  //}
 
   @override
   Widget build(BuildContext context) => Column(
@@ -45,7 +47,7 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
           ),
           const SizedBox(height: 8),
           TextField(
-            controller: controller,
+            controller: widget.controller,
             decoration: InputDecoration(
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),

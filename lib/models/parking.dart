@@ -1,43 +1,54 @@
-import 'dart:ui';
-import 'package:flutter/material.dart';
-
 class Parking {
-  String  Name;
-  String  Adress;
-  String  description;
-  int  totalParkingLots;
-  int  totalFreeParkingLots;
-  double  latitude;
-  double   longitude;
-  int  ParkingFees;
-  String  companyId;
-  bool Status;
+  String name;
+  String adress;
+  String description;
+  int totalParkingLots;
+  int totalFreeParkingLots;
+  int latitude;
+  int longitude;
+  int parkingFees;
+  String companyId;
+  String status;
 
   Parking(
-    {
-      this.Name,
-      this.Adress,
+      {
+      this.name,
+      this.adress,
       this.description,
       this.totalParkingLots,
       this.totalFreeParkingLots,
       this.latitude,
       this.longitude,
-      this.ParkingFees,
+      this.parkingFees,
       this.companyId,
-      this.Status,
-    }
-  );
+      this.status,
+    });
 
-  Parking.fromJosn(Map json) :
-      Name=json["Name"], 
-      Adress=json["Adress"],
-      description=json["description"],
-      totalParkingLots=json["totalParkingLots"],
-      totalFreeParkingLots=json["totalFreeParkingLots"],
-      latitude=json["latitude"],
-      longitude=json["longitude"],
-      ParkingFees=json["ParkingFees"],
-      companyId=json["companyId"],
-      Status=json["Status"];
+  Parking.fromJson(Map<String, dynamic> json) {
+    name = json['Name'];
+    adress = json['Adress'];
+    description = json['description'];
+    totalParkingLots = json['totalParkingLots'];
+    totalFreeParkingLots = json['totalFreeParkingLots'];
+    latitude = json['latitude'];
+    longitude = json['longitude'];
+    parkingFees = json['ParkingFees'];
+    companyId = json['companyId'];
+    status = json['Status'];
+  }
 
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['Name'] = this.name;
+    data['Adress'] = this.adress;
+    data['description'] = this.description;
+    data['totalParkingLots'] = this.totalParkingLots;
+    data['totalFreeParkingLots'] = this.totalFreeParkingLots;
+    data['latitude'] = this.latitude;
+    data['longitude'] = this.longitude;
+    data['ParkingFees'] = this.parkingFees;
+    data['companyId'] = this.companyId;
+    data['Status'] = this.status;
+    return data;
+  }
 }

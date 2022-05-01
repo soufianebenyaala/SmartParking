@@ -10,9 +10,7 @@ class ReservationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final double height= MediaQuery.of(context).size.height;
-    final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
     return Scaffold(
-       key: _scaffoldKey,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0,

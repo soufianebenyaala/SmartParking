@@ -1,6 +1,6 @@
 import 'package:flutter_auth/models/parking.dart';
 
-class ParkingsPreferences {
+/*class ParkingsPreferences {
  static List<Parking> parkings = <Parking>[
       Parking(
         Name:"Carrefour parking",
@@ -12,7 +12,7 @@ class ParkingsPreferences {
         longitude:2.287592,
         ParkingFees:5,
         companyId:"1",
-        Status:true,
+        Status:'true',
       ),
             Parking(
         Name:"Carrefour parking",
@@ -24,7 +24,7 @@ class ParkingsPreferences {
         longitude:2.287592,
         ParkingFees:5,
         companyId:"1",
-        Status:true,
+        Status:'true',
       ),
       Parking(
         Name:"Carrefour parking",
@@ -36,7 +36,7 @@ class ParkingsPreferences {
         longitude:2.287592,
         ParkingFees:5,
         companyId:"1",
-        Status:true,
+        Status:'true',
       ),
             Parking(
         Name:"Carrefour parking",
@@ -48,7 +48,7 @@ class ParkingsPreferences {
         longitude:2.287592,
         ParkingFees:5,
         companyId:"1",
-        Status:true,
+        Status:'true',
       ),
  ];
-}
+}*/

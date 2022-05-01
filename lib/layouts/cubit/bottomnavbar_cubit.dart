@@ -11,7 +11,7 @@ class BottomnavbarCubit extends Cubit<BottomnavbarState> {
 
   static BottomnavbarCubit get(context)=>BlocProvider.of(context);
 
-  List<Widget> screens = [ParkingsScreen(),UserProfileScreen(),ParkingsScreen(),CarsScreen(),ParkingsScreen()];
+  List<Widget> screens = [ParkingsScreen(),CarsScreen(),UserProfileScreen()];
 
   int currentIndex = 0;
 

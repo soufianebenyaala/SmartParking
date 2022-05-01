@@ -1,25 +1,33 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/constants.dart';
+import 'package:lottie/lottie.dart';
 
-class SplashPage extends StatelessWidget {
+class SplashPage extends StatefulWidget {
   int duration = 0;
   Widget goTopage;
 
   SplashPage({this.duration,this.goTopage });
 
   @override
+  State<SplashPage> createState() => _SplashPageState();
+}
+
+class _SplashPageState extends State<SplashPage> {
+ 
+  @override
   Widget build(BuildContext context) {
 
-    Future.delayed(Duration(seconds: this.duration),(){
-      Navigator.push(context, MaterialPageRoute(builder: (context) => this.goTopage ));
+    Future.delayed(Duration(seconds: this.widget.duration),(){
+      Navigator.push(context, MaterialPageRoute(builder: (context) => widget.goTopage ));
     });
 
     return Scaffold(
-      body: Container(
+      body:  Container(
         color: kPrimaryColor,
-        alignment: Alignment.center,
-        child:  Icon(Icons.favorite,color: Colors.white,size: 100,),
+        child:Center(
+          child: Lottie.asset("assets/parking-concept.json"),
+        ),
       ),
     );
   }

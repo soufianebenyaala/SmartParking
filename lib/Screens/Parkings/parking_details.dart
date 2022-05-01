@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/Screens/Parkings/resevation_screen.dart';
+import 'package:flutter_auth/Screens/Reclamation/reclamation_screen.dart';
 import 'package:flutter_auth/components/rounded_button.dart';
 import 'package:flutter_auth/constants.dart';
 import 'package:flutter_auth/models/parking.dart';
@@ -12,6 +13,7 @@ class ParkingDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: Stack(
         fit: StackFit.expand,
@@ -28,51 +30,60 @@ class ParkingDetailsScreen extends StatelessWidget {
               ),
             ),
           ),
-
           FractionallySizedBox(
             alignment: Alignment.bottomCenter,
             heightFactor: 0.5,
             child: Container(
-              padding: EdgeInsets.all(40),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.vertical(top: Radius.circular(34))
-              ),
-            child:Column(
-              children: [
-                _titleSection(parking),
-                SizedBox(height: 40,),
-                _infoSection(parking),
-                SizedBox(height: 30,),
-                RoundedButton(
-                  color: kPrimaryColor,
-                  text: "Reserve maintenant",
-                  textColor:  Colors.white,
-                  press: (){ Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => ReservationScreen(parking)),
-                    );},
-                ),
-                RoundedButton(
-                  color: Colors.red[800],
-                  text: "Reclamation",
-                  textColor:  Colors.white,
-                  press: (){},
-                )
-              ],
-            )
-            ),
+                padding: EdgeInsets.all(40),
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius:
+                        BorderRadius.vertical(top: Radius.circular(34))),
+                child: Column(
+                  children: [
+                    _titleSection(parking),
+                    SizedBox(
+                      height: 40,
+                    ),
+                    _infoSection(parking),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    RoundedButton(
+                      width: size.width * 0.8,
+                      color: kPrimaryColor,
+                      text: "Reserve maintenant",
+                      textColor: Colors.white,
+                      press: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ReservationScreen(parking)),
+                        );
+                      },
+                    ),
+                    RoundedButton(
+                      width: size.width * 0.8,
+                      color: Colors.red[800],
+                      text: "Reclamation",
+                      textColor: Colors.white,
+                      press: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ReclamationScreen(parking)),
+                        );
+                      },
+                    )
+                  ],
+                )),
           ),
-
         ],
       ),
     );
-
-
   }
 
-      /// Info Section
+  /// Info Section
   Row _infoSection(parking) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -83,13 +94,14 @@ class ParkingDetailsScreen extends StatelessWidget {
           height: 40,
           color: Colors.grey,
         ),
-        _infoCell(title: 'Free lots', value: parking.totalFreeParkingLots.toString()),
+        _infoCell(
+            title: 'Free lots', value: parking.totalFreeParkingLots.toString()),
         Container(
           width: 1,
           height: 40,
           color: Colors.grey,
         ),
-        _infoCell(title: 'Cost', value: "TND"+parking.ParkingFees.toString()),
+        _infoCell(title: 'Cost', value: "TND" + parking.parkingFees.toString()),
       ],
     );
   }
@@ -126,7 +138,7 @@ class ParkingDetailsScreen extends StatelessWidget {
     return Column(
       children: <Widget>[
         Text(
-          parking.Name,
+          parking.name,
           style: TextStyle(
             fontFamily: 'NimbusSanL',
             fontWeight: FontWeight.w700,
@@ -137,7 +149,7 @@ class ParkingDetailsScreen extends StatelessWidget {
           height: 8,
         ),
         Text(
-          parking.Adress,
+          parking.adress,
           style: TextStyle(
             fontFamily: 'NimbusSanL',
             fontStyle: FontStyle.italic,

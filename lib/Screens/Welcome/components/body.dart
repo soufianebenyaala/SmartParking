@@ -7,6 +7,10 @@ import 'package:flutter_auth/constants.dart';
 import 'package:flutter_svg/svg.dart';
 
 class Body extends StatelessWidget {
+  final void Function(bool) onLoginChange;
+
+  const Body({Key key, this.onLoginChange}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -27,19 +31,21 @@ class Body extends StatelessWidget {
             ),
             SizedBox(height: size.height * 0.05),
             RoundedButton(
+              width: size.width * 0.8,
               text: "LOGIN",
               press: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) {
-                      return LoginScreen();
+                      return LoginScreen(onLoginChange: this.onLoginChange,);
                     },
                   ),
                 );
               },
             ),
             RoundedButton(
+              width: size.width * 0.8,
               text: "SIGN UP",
               color: kPrimaryLightColor,
               textColor: Colors.black,

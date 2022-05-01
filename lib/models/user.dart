@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_auth/models/car.dart';
 
 class User {
+  String id;
   String  name;
   String  email;
   String  address;
@@ -14,6 +15,7 @@ class User {
 
   User(
     {
+      this.id,
       this.name,
       this.email,
       this.address,
@@ -25,16 +27,20 @@ class User {
     }
   );
 
-  User.fromJosn(Map json) :
-          name = json["name"],
-          email = json["email"],
-          address = json["address"],
-          password = json["password"],
-          photo = json["photo"],
-          phone = json["phone"],
-          role = json["role"],
-          cars = json["cars"];
-
+  User.fromJson(Map<String, dynamic> json) {
+    id = json['_id'];
+    name = json['name'];
+    email = json['email'];
+    address = json['address'];
+    phone = json['phone'];
+  }
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['name'] = this.name;
+    data['address'] = this.address;
+    data['phone'] = this.phone;
+    return data;
+  }
 
 }
 
