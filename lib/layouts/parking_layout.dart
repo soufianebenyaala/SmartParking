@@ -29,7 +29,7 @@ class ParkingLayout extends StatelessWidget {
               items: [
                 TabItem(icon: Icons.home, title: 'Home'),
                 TabItem(icon: Icons.map, title: 'Discovery'),
-                //TabItem(icon: Icons.add, title: 'Add'),
+                TabItem(icon: Icons.add, title: 'Add'),
                 //TabItem(icon: Icons.message, title: 'Message'),
                 TabItem(icon: Icons.people, title: 'Profile'),
               ],

@@ -1,5 +1,5 @@
 class Validation {
-  static String PasswordValidation(password) {
+  static String validatePassword(password) {
     if (password.isEmpty) {
       return 'This field must not be empty';
     }
@@ -14,14 +14,14 @@ class Validation {
     return null;
   }
 
-  static String NameValidation(value) {
+  static String validateName(value) {
     if (value.isEmpty) {
       return 'Name is required.';
     }
     return null;
   }
 
-  static String EmailValidation(value) {
+  static String validateEmail(value) {
     if (value.isEmpty) {
       return 'Email is required';
     }
@@ -36,25 +36,61 @@ class Validation {
     return null;
   }
 
-  static String PhoneValidation(value) {
+  static String validatePhone(value) {
     if (value.isEmpty) {
       return 'Phone number is required';
     }
     return null;
   }
 
-  static String UrlValidation(value) {
+  static String validateUrl(value) {
     if (value.isEmpty) {
       return 'URL is required';
     }
     return null;
   }
 
-  static String AgeValidation(value) {
+  static String validateAge(value) {
     int age = int.tryParse(value);
     if (age == null || age <= 0) {
       return 'Age must be greater then 0';
     }
     return null;
+  }
+
+  static String validateNameWithLetterOnly(String value) {
+    String patttern = r'(^[a-zA-Z ]*$)';
+    RegExp regExp = new RegExp(patttern);
+    if (value.length == 0) {
+      return "Name is Required";
+    } else if (!regExp.hasMatch(value)) {
+      return "Name must be a-z and A-Z";
+    }
+    return null;
+  }
+
+  static String validateMobile(String value) {
+    String patttern = r'(^[0-9]*$)';
+    RegExp regExp = new RegExp(patttern);
+    if (value.length == 0) {
+      return "Mobile is Required";
+    } else if(value.length != 10){
+      return "Mobile number must 10 digits";
+    }else if (!regExp.hasMatch(value)) {
+      return "Mobile Number must be digits";
+    }
+    return null;
+  }
+
+  String _validateEmail(String value) {
+    String pattern = r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+    RegExp regExp = new RegExp(pattern);
+    if (value.length == 0) {
+      return "Email is Required";
+    } else if(!regExp.hasMatch(value)){
+      return "Invalid Email";
+    }else {
+      return null;
+    }
   }
 }

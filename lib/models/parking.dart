@@ -1,4 +1,5 @@
 class Parking {
+  String id;
   String name;
   String adress;
   String description;
@@ -12,6 +13,7 @@ class Parking {
 
   Parking(
       {
+      this.id,
       this.name,
       this.adress,
       this.description,
@@ -25,6 +27,7 @@ class Parking {
     });
 
   Parking.fromJson(Map<String, dynamic> json) {
+    id = json['_id'];
     name = json['Name'];
     adress = json['Adress'];
     description = json['description'];

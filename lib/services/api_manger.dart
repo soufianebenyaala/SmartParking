@@ -1,6 +1,7 @@
 import 'package:flutter/src/widgets/editable_text.dart';
 import 'package:flutter_auth/models/car.dart';
 import 'package:flutter_auth/models/parking.dart';
+import 'package:flutter_auth/models/reservation.dart';
 import 'package:flutter_auth/services/shared_prefes_manager.dart';
 import 'package:flutter_auth/services/user_manager.dart';
 import 'package:http/http.dart' as http;
@@ -16,6 +17,7 @@ class ApiManager {
   static const parkingsAPIURL = apiAddress + '/api/parkings';
   static const carAPIURL = apiAddress + '/api/car';
   static const reclamationAPIURL = apiAddress + '/api/reclamation';
+  static const resarvationAPIURL = apiAddress + '/api/parking/reserve';
 
 
 
@@ -42,6 +44,7 @@ class ApiManager {
       }
       return [];
     } catch (e) {
+            print("getparkings");
       print(e);
     }
   }
@@ -214,9 +217,148 @@ print("statusCode2");
       print(e);
     }
   }
-  }
-  
 
+  static Future<String> createResarvation( datetime, position,  UserId, ParkingId) async{
+    print(datetime);
+    try {
+      final uri = Uri.parse(ApiManager.resarvationAPIURL);
+      final headers = {'Content-Type': 'application/json'};
+      Map<String, dynamic>  body = {
+            "userId":UserId, 
+            "parkingid":ParkingId,
+            "startingDate":datetime,
+            "endingDate": null,
+            "position":position
+      };
+      String jsonBody = jsonEncode(body);
+      print(jsonBody);
+      final encoding = Encoding.getByName('utf-8');
+      var response = await http.post(
+        uri,
+        headers: headers,
+        body: jsonBody,
+        encoding: encoding,
+      );
+      print("statusCode2");
+      int statusCode = response.statusCode;
+      String responseBody = response.body;
+      
+      print(statusCode);
+      print(response.body);
+  
+      if (statusCode == 201) {
+        // Signed up successfully
+        print("success");
+
+      } else {
+        // Error signing up
+        print("error");
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  static Future<List<Reservation>> getreservationByUser(userId,status) async {
+    List<Reservation> _reservation = [];
+    print(userId);
+    try {
+      final uri = Uri.parse(ApiManager.resarvationAPIURL+"/"+userId+"?status="+status);
+      final headers = {'Content-Type': 'application/json'};
+      var response = await http.Client().get(
+        uri,
+        headers: headers,
+      );
+      int statusCode = response.statusCode;
+      if (statusCode == 200) {
+        String responseBody = response.body;
+        
+        var jsonResp = jsonDecode(responseBody);
+        print(jsonResp);
+        if (jsonResp != null) {
+          for (var item in jsonResp) {
+            Reservation reservations;
+            if (status == "RESERVE") {
+              reservations = Reservation.fromReserveJson(item);
+            } else {
+              reservations = Reservation.fromCheckOutJson(item);
+            }
+           
+            _reservation.add(reservations);
+          }
+        }
+        return _reservation;
+      }
+      return [];
+    } catch (e) {
+      print(e);
+    }
+  }
+
+
+  static Future<String> resarvationUpdate(String id) async {
+    try {
+      final uri = Uri.parse(ApiManager.resarvationAPIURL+"/"+id);
+      final headers = {'Content-Type': 'application/json'};
+      //var body = User(name: name,address: address,phone: phone).toJson();
+      Map<String, String> body = {
+        'status': "CHECKEDOUT",
+        'endingDate': DateTime.now().toString(),
+      };
+
+      String jsonBody = json.encode(body);
+      print(jsonBody);
+      final encoding = Encoding.getByName('utf-8');
+      var response = await http.put(
+        uri,
+        headers: headers,
+        body: jsonBody,
+        encoding: encoding,
+      );
+
+      int statusCode = response.statusCode;
+      String responseBody = response.body;
+      var jsonResp = jsonDecode(responseBody);
+
+      if (jsonResp['message'] == 200) {
+        // Signed up successfully
+
+      } else {
+        // Error signing up
+        return jsonResp['message'];
+      }
+    } catch (e) {
+      throw Exception(e);
+    }
+  }
+
+  static Future<String> resarvationdelete(String id) async {
+ try{
+      final uri = Uri.parse(ApiManager.resarvationAPIURL+"/"+id);
+      final headers = {'Content-Type': 'application/json'};
+
+      var response = await http.delete(
+        uri,
+        headers: headers,
+      );
+
+      int statusCode = response.statusCode;
+      print(statusCode);
+      String responseBody = response.body;
+      var jsonResp = jsonDecode(responseBody);
+      
+      if (statusCode == 200) {
+        // Signed up successfully
+         return statusCode.toString();
+      } else {
+        // Error signing up
+        return jsonResp['message'];
+      }
+    } catch (e) {
+      throw Exception(e);
+    }
+  }
+}
 
   /*  static Future<List<Parking>> getparkings() async {
     List<Parking> _parkings = [];

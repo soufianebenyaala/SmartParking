@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_auth/Screens/Resarvation/resevation_panier_screen.dart';
 import 'package:flutter_auth/components/menu_item.dart';
 import 'package:flutter_auth/constants.dart';
 import 'package:flutter_auth/main.dart';
@@ -88,6 +89,20 @@ class SideMenuBar extends StatelessWidget {
                   title: 'Settings',
                 ),*/
                 MenuItem(
+                  icon: Icons.card_travel,
+                  title: 'Panier',
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return ReservationPanierScreen();
+                        },
+                      ),
+                    );
+                  },
+                ),
+                MenuItem(
                   icon: Icons.exit_to_app,
                   title: 'Log Out',
                   onTap: () {
@@ -102,6 +117,7 @@ class SideMenuBar extends StatelessWidget {
                     );
                   },
                 ),
+                
               ],
             ),
           ),

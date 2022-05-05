@@ -52,13 +52,13 @@ class _BodyState extends State<Body> {
                   email = value;
                 },
                 validator: (value) {
-                  Validation.EmailValidation(value);
+                  Validation.validateEmail(value);
                 },
               ),
               RoundedPasswordField(onChanged: (value) {
                 password = value;
               }, validator: (value) {
-                Validation.PasswordValidation(value);
+                Validation.validatePassword(value);
               }),
               RoundedButton(
                   width: size.width * 0.8,

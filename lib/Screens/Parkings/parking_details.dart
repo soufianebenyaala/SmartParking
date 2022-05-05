@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_auth/Screens/Parkings/resevation_screen.dart';
 import 'package:flutter_auth/Screens/Reclamation/reclamation_screen.dart';
+import 'package:flutter_auth/Screens/Resarvation/forms_resevation_screen.dart';
 import 'package:flutter_auth/components/rounded_button.dart';
 import 'package:flutter_auth/constants.dart';
 import 'package:flutter_auth/models/parking.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'package:http/http.dart' as http;
 
 class ParkingDetailsScreen extends StatelessWidget {
   Parking parking;
@@ -58,7 +56,7 @@ class ParkingDetailsScreen extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => ReservationScreen(parking)),
+                              builder: (context) => FormsReservationScreen(parking)),
                         );
                       },
                     ),

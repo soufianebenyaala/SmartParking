@@ -1,12 +1,12 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/components/button_widget.dart';
 import 'package:flutter_auth/components/profile_widget.dart';
 import 'package:flutter_auth/components/textfield_widget.dart';
 import 'package:flutter_auth/layouts/parking_layout.dart';
 import 'package:flutter_auth/models/user.dart';
-import 'package:flutter_auth/services/shared_prefes_manager.dart';
 import 'package:flutter_auth/services/user_manager.dart';
-import 'package:flutter_auth/utils/user.dart';
+import 'package:image_picker/image_picker.dart';
 
 class Body extends StatefulWidget {
   User user;
@@ -17,10 +17,10 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
+  File _image;
+  final ImagePicker _picker = ImagePicker();
   TextEditingController _nameController = TextEditingController();
-
   TextEditingController _phoneController = TextEditingController();
-
   TextEditingController _addressController = TextEditingController();
 
   @override
@@ -90,9 +90,25 @@ class _BodyState extends State<Body> {
           scrollable: true,
           title: Text("chose un option"),
           actions: [TextButton(onPressed: () {}, child: Text("submit"))],
-          content: Column(
+          content: Row(
             children: [
-              Row(
+              FlatButton.icon(
+                onPressed: (){
+                  takePhoto(ImageSource.gallery);
+                }, 
+                icon: Icon(Icons.image,size: 35,), 
+                label: Text("Gallery",style: TextStyle(fontSize: 18),)
+                ),
+                              FlatButton.icon(
+                onPressed: (){
+                  takePhoto(ImageSource.camera);
+                }, 
+                icon: Icon(Icons.camera,size: 35,), 
+                label: Text("Camera",style: TextStyle(fontSize: 18),)
+                ),
+
+
+              /*Row(
                 children: [
                   Padding(
                     padding: EdgeInsets.all(8.0),
@@ -127,7 +143,7 @@ class _BodyState extends State<Body> {
                         color: Colors.blue),
                   )
                 ],
-              ),
+              ),*/
             ],
           )));
 
@@ -181,6 +197,18 @@ class _BodyState extends State<Body> {
           ),
         );
       });
+
+  void takePhoto(ImageSource source) async  {
+    File image;
+      XFile  pickedFile =
+        await _picker.pickImage(source: source);
+    if(pickedFile != null){
+         image = File(pickedFile.path);
+    }
+    setState(() {
+      _image = image;
+    });
+  }
 }
 
 class BuildContent extends StatelessWidget {

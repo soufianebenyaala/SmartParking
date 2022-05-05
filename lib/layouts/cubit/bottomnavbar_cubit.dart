@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/Screens/Cars/cars_screen.dart';
 import 'package:flutter_auth/Screens/Parkings/parkings_screen.dart';
+import 'package:flutter_auth/Screens/Resarvation/resevation_screen.dart';
 import 'package:flutter_auth/Screens/UserProfile/user_profile_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -11,7 +12,7 @@ class BottomnavbarCubit extends Cubit<BottomnavbarState> {
 
   static BottomnavbarCubit get(context)=>BlocProvider.of(context);
 
-  List<Widget> screens = [ParkingsScreen(),CarsScreen(),UserProfileScreen()];
+  List<Widget> screens = [ParkingsScreen(),CarsScreen(),ReservationScreen(),UserProfileScreen()];
 
   int currentIndex = 0;
 

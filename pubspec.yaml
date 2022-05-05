@@ -35,6 +35,9 @@ dependencies:
   video_player: ^2.3.0
   flutter_native_splash: ^2.1.6
   flutter_svg: ^1.0.3
+  datetime_picker_formfield: ^2.0.0
+  intl: ^0.17.0
+  image_picker: ^0.8.5
 
 dev_dependencies:
   flutter_test:

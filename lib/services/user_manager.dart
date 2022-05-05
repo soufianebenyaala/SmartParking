@@ -90,7 +90,8 @@ class UserManager {
         return jsonResp['message'];
       }
     } catch (e) {
-      throw Exception(e);
+      print("performUserLogin");
+      print(e);
     }
   }
 
